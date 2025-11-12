@@ -110,8 +110,10 @@ body {
   border: 1px solid var(--outline);
   border-radius: 8px;
   padding: 2px 6px;
+  font-size: .85rem;
+  line-height: 1.1;
 }
-.last-day { color: var(--danger); font-weight: 600; }
+.last-day { color: var(--danger); font-weight: 600; font-size: .85rem; line-height: 1.1; }
 
 .app-footer { text-align: center; padding: 18px; color: var(--muted-ink); }
 
@@ -120,4 +122,6 @@ body {
   .brand-icon { width: 30px; height: 30px; }
   .grid { gap: 4px; }
   .day { min-height: 64px; padding: 6px; }
+  .spend .amount { font-size: .75rem; }
+  .last-day { font-size: .75rem; }
 }

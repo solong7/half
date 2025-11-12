@@ -1,12 +1,13 @@
-const CACHE_NAME = 'khun-lakrueng-plus-v1';
+const CACHE_NAME = 'khun-lakrueng-plus-v2';
 const ASSETS = [
   '/',
   '/index.html',
   '/styles.css',
   '/app.js',
   '/manifest.webmanifest',
-  '/icons/icon.svg',
+  '/icons/favicon.ico',
   '/icons/maskable-icon.svg',
+  '/icons/maskable-icon2.svg',
   'https://fonts.googleapis.com/css2?family=Prompt:wght@300;400;500;600;700&display=swap'
 ];
 
@@ -37,4 +38,3 @@ self.addEventListener('fetch', (event) => {
     })
   );
 });
-
