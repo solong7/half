@@ -1,0 +1,60 @@
+<!doctype html>
+<html lang="th">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1" />
+    <meta name="theme-color" content="#e3ecff" />
+    <title>คนละครึ่งพลัส Planner</title>
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Prompt:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="styles.css" />
+    <link rel="manifest" href="manifest.webmanifest" />
+    <link rel="icon" type="image/svg+xml" href="icons/icon.svg" />
+    <link rel="apple-touch-icon" href="icons/icon.svg" />
+    <meta name="description" content="คำนวณจำนวนวันใช้งานสิทธิคนละครึ่งพลัส และแสดงปฏิทินการใช้เงินรายวัน" />
+  </head>
+  <body>
+    <div align="center">
+     <img src="icons/KLK-logo.svg" alt="icon" class="" width="200" />
+    </div>
+    <header class="app-header">
+
+      <p class="tagline">คำนวณและวางแผนการใช้สิทธิแบบง่าย ๆ by Solong ^_^</p>
+    </header>
+
+    <main class="container">
+      <section class="card inputs">
+        <div class="field">
+          <label for="remaining">สิทธิคนละครึ่งพลัสที่คงเหลือ (บาท)</label>
+          <input id="remaining" type="text" inputmode="numeric" pattern="[0-9]*" min="0" max="2400" step="100" placeholder="เช่น 2400" />
+          <small class="hint">กรอกได้ตั้งแต่ 0 ถึง 2400 บาท </small>
+        </div>
+
+        <div class="field">
+          <label for="perDay">ตั้งใจใช้ต่อวัน (บาท)</label>
+          <input id="perDay" type="text" inputmode="numeric" pattern="[0-9]*" min="0" max="200" step="10" placeholder="สูงสุด 200" />
+          <small class="hint">สูงสุดวันละ 200 บาท </small>
+        </div>
+
+        <div class="actions">
+          <button id="planBtn" class="primary">คำนวณแผน</button>
+          <button id="resetBtn" class="ghost">ล้างค่า</button>
+        </div>
+
+        <div id="summary" class="summary" aria-live="polite"></div>
+        <div id="errors" class="errors" aria-live="assertive"></div>
+      </section>
+
+      <section class="card calendar" id="calendar">
+        <!-- ปฏิทินจะแสดงที่นี่ -->
+      </section>
+    </main>
+
+    <footer class="app-footer">
+      <span>© 2025 Solong. All rights reserved.</span>
+    </footer>
+
+    <script src="app.js"></script>
+  </body>
+  </html>
+

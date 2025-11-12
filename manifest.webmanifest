@@ -1,0 +1,24 @@
+{
+  "name": "คนละครึ่งพลัส Planner",
+  "short_name": "ครึ่งพลัส Planner",
+  "description": "คำนวณจำนวนวันใช้งานสิทธิคนละครึ่งพลัส และแสดงปฏิทินการใช้เงินรายวัน",
+  "start_url": ".",
+  "display": "standalone",
+  "background_color": "#f2f6ff",
+  "theme_color": "#e3ecff",
+  "icons": [
+    {
+      "src": "icons/icon.svg",
+      "type": "image/svg+xml",
+      "sizes": "any",
+      "purpose": "any"
+    },
+    {
+      "src": "icons/maskable-icon.svg",
+      "type": "image/svg+xml",
+      "sizes": "any",
+      "purpose": "maskable"
+    }
+  ]
+}
+
