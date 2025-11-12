@@ -5,6 +5,30 @@ if ('serviceWorker' in navigator) {
   });
 }
 
+// Show install button when app is installable (Chromium)
+let deferredPrompt = null;
+const $installBtn = document.getElementById('installBtn');
+window.addEventListener('beforeinstallprompt', (e) => {
+  e.preventDefault();
+  deferredPrompt = e;
+  if ($installBtn) $installBtn.style.display = 'inline-block';
+});
+if ($installBtn) {
+  $installBtn.addEventListener('click', async () => {
+    if (!deferredPrompt) return;
+    deferredPrompt.prompt();
+    try {
+      await deferredPrompt.userChoice;
+    } finally {
+      deferredPrompt = null;
+      $installBtn.style.display = 'none';
+    }
+  });
+}
+window.addEventListener('appinstalled', () => {
+  if ($installBtn) $installBtn.style.display = 'none';
+});
+
 const endDate = new Date(2025, 11, 31); // 31 Dec 2025 (2568 BE)
 
 const $remaining = document.getElementById('remaining');
