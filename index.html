@@ -1,63 +1,83 @@
 <!doctype html>
 <html lang="th">
-  <head>
-    <meta charset="utf-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1" />
-    <meta name="theme-color" content="#e3ecff" />
-    <meta name="apple-mobile-web-app-capable" content="yes" />
-    <meta name="apple-mobile-web-app-status-bar-style" content="default" />
-    <title>คนละครึ่งพลัส Planner</title>
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Prompt:wght@300;400;500;600;700&display=swap" rel="stylesheet">
-    <link rel="stylesheet" href="styles.css" />
-    <link rel="manifest" href="manifest.webmanifest" />
-    <link rel="icon" href="icons/favicon.ico" />
-    <link rel="apple-touch-icon" href="icons/maskable-icon.svg" />
-    <meta name="description" content="คำนวณจำนวนวันใช้งานสิทธิคนละครึ่งพลัส และแสดงปฏิทินการใช้เงินรายวัน" />
-  </head>
-  <body>
-    <div align="center">
-     <img src="icons/KLK-logo.svg" alt="icon" class="" width="200" />
+
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1" />
+  <meta name="theme-color" content="#e3ecff" />
+  <meta name="apple-mobile-web-app-capable" content="yes" />
+  <meta name="apple-mobile-web-app-status-bar-style" content="default" />
+  <title>คนละครึ่งพลัส Planner</title>
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Prompt:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="styles.css" />
+  <link rel="manifest" href="manifest.webmanifest" />
+  <link rel="icon" href="icons/favicon.ico" />
+  <link rel="apple-touch-icon" href="icons/maskable-icon.svg" />
+  <meta name="description" content="คำนวณจำนวนวันใช้งานสิทธิคนละครึ่งพลัส และแสดงปฏิทินการใช้เงินรายวัน" />
+</head>
+
+<body>
+  <div align="center">
+    <img src="icons/KLK-logo.svg" alt="icon" class="" width="200" />
+  </div>
+  <header class="app-header">
+
+    <p class="tagline">คำนวณและวางแผนการใช้สิทธิแบบง่าย ๆ by Solong ^_^</p>
+  </header>
+
+  <main class="container">
+    <section class="card inputs">
+      <div class="field">
+        <label for="remaining">สิทธิคนละครึ่งพลัสที่คงเหลือ (บาท)</label>
+        <input id="remaining" type="text" inputmode="numeric" pattern="[0-9]*" min="0" max="2400" step="100"
+          placeholder="เช่น 2400" />
+        <small class="hint">กรอกได้ตั้งแต่ 0 ถึง 2400 บาท </small>
+      </div>
+
+      <div class="field">
+        <label for="perDay">ตั้งใจใช้ต่อวัน (บาท)</label>
+        <input id="perDay" type="text" inputmode="numeric" pattern="[0-9]*" min="0" max="200" step="10"
+          placeholder="สูงสุด 200" />
+        <small class="hint">สูงสุดวันละ 200 บาท </small>
+      </div>
+
+      <div class="actions">
+        <button id="planBtn" class="primary">คำนวณแผน</button>
+        <button id="resetBtn" class="ghost">ล้างค่า</button>
+        <button id="installBtn" class="ghost" style="display:none">ติดตั้งแอป</button>
+      </div>
+
+      <div id="summary" class="summary" aria-live="polite"></div>
+      <div id="errors" class="errors" aria-live="assertive"></div>
+    </section>
+
+    <section class="card calendar" id="calendar">
+      <!-- ปฏิทินจะแสดงที่นี่ -->
+    </section>
+  </main>
+
+
+    <div style="text-align:center; margin-top:30px; font-family:'Prompt',sans-serif;">
+      ☕ สนใจเลี้ยงกาแฟผู้พัฒนา?
+      <a href="https://promptpay.io/0123456789" target="_blank" style="display:inline-block;
+            background:#007bff;
+            color:#fff;
+            padding:10px 18px;
+            border-radius:12px;
+            margin-top:8px;
+            text-decoration:none;
+            font-weight:600;
+            box-shadow:0 2px 6px rgba(0,0,0,0.2);">
+        💙 โอนผ่าน PromptPay / E-Wallet
+      </a>
+      <p style="font-size:12px; color:#555;">© 2025 By Solong All Rights Reserved.</p>
     </div>
-    <header class="app-header">
 
-      <p class="tagline">คำนวณและวางแผนการใช้สิทธิแบบง่าย ๆ by Solong ^_^</p>
-    </header>
 
-    <main class="container">
-      <section class="card inputs">
-        <div class="field">
-          <label for="remaining">สิทธิคนละครึ่งพลัสที่คงเหลือ (บาท)</label>
-          <input id="remaining" type="text" inputmode="numeric" pattern="[0-9]*" min="0" max="2400" step="100" placeholder="เช่น 2400" />
-          <small class="hint">กรอกได้ตั้งแต่ 0 ถึง 2400 บาท </small>
-        </div>
 
-        <div class="field">
-          <label for="perDay">ตั้งใจใช้ต่อวัน (บาท)</label>
-          <input id="perDay" type="text" inputmode="numeric" pattern="[0-9]*" min="0" max="200" step="10" placeholder="สูงสุด 200" />
-          <small class="hint">สูงสุดวันละ 200 บาท </small>
-        </div>
 
-        <div class="actions">
-          <button id="planBtn" class="primary">คำนวณแผน</button>
-          <button id="resetBtn" class="ghost">ล้างค่า</button>
-          <button id="installBtn" class="ghost" style="display:none">ติดตั้งแอป</button>
-        </div>
+  <script src="app.js"></script>
+</body>
 
-        <div id="summary" class="summary" aria-live="polite"></div>
-        <div id="errors" class="errors" aria-live="assertive"></div>
-      </section>
-
-      <section class="card calendar" id="calendar">
-        <!-- ปฏิทินจะแสดงที่นี่ -->
-      </section>
-    </main>
-
-    <footer class="app-footer">
-      <span>© 2025 Solong. All rights reserved.</span>
-    </footer>
-
-    <script src="app.js"></script>
-  </body>
-  </html>
-
+</html>
